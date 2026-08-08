@@ -1,0 +1,8 @@
+timestamp,source,event,severity
+10:02,Email Gateway,Received phishing email with subject "Urgent: Direct Deposit Details" to cfo@company.com,High
+10:05,Chrome Browser,User clicked link pointing to phishing login portal secure-login-update.com,High
+10:07,Active Directory,OAuth access token requested for cfo account from external IP 203.0.113.88,Critical
+10:12,Exchange Server,Inbox forwarding rule created forwarding CFO emails to exfiltrator@proton.me,Critical
+10:20,PowerShell,Script run exporting Active Directory database NTDS.dit to C:\Windows\Temp\ntds.bak,Critical
+10:35,Chrome Browser,Large multi-gigabyte upload initiated to mega.nz file storage service,Critical
+10:40,Firewall,Data exfiltration alert: 12.4 GB transferred out of network boundary to unclassified IP,Critical
