@@ -2,3 +2,7 @@
   base = "frontend"
   command = "npm run build"
   publish = ".output/public"
+
+[build.environment]
+  MISE_VERSION = "latest"
+
