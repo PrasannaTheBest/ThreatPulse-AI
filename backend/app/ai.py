@@ -1,4 +1,17 @@
 def analyze(events):
+    original_count = len(events)
+    
+    # Sift and filter if there are too many events to prevent frontend rendering crashes
+    if len(events) > 100:
+        # Keep Critical and High severity events first
+        high_severity = [e for e in events if str(e.get("severity", "")).lower() in ["critical", "high", "error", "warning"]]
+        if len(high_severity) >= 10:
+            events = high_severity
+        
+        # If still over 100, take the first 50 (initial access/recon) and last 50 (impact/exfil)
+        if len(events) > 100:
+            events = events[:50] + events[-50:]
+
     # Ensure timeline items have an 'evidence' field
     formatted_timeline = []
     for e in events:
