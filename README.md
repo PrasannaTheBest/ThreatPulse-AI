@@ -113,6 +113,33 @@ timestamp,source,event,severity
 
 ---
 
+## 🌐 Production Deployment & Large Files
+
+ThreatPulse AI is designed to deploy seamlessly on modern cloud hosting:
+
+### 1. Backend (Railway)
+1. Link this repository to a new project on **Railway**.
+2. Railway will automatically detect `railway.toml` and configure the build pack using `requirements.txt` and `runtime.txt`.
+3. It will launch the FastAPI server using:
+   `python -m uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT`
+
+### 2. Frontend (Netlify)
+1. Link the same repository to a site on **Netlify**.
+2. Netlify will read the root `netlify.toml` which automatically builds from the `frontend` directory using `npm run build` and publishes `.output/public`.
+
+### ⚠️ Handling Large Log Uploads (> 6MB)
+Netlify's serverless edge and functions enforce a strict **6MB request body size limit**. If you upload large logs (such as a 10MB Windows Event Log CSV), Netlify will block the request and return an error.
+
+**Solution**:
+Bypass Netlify's serverless proxy by configuring the React frontend to communicate directly with your Railway backend:
+1. In your **Netlify Dashboard**, go to **Site settings** -> **Environment variables**.
+2. Add a new variable:
+   - Key: `VITE_API_BASE_URL`
+   - Value: `https://your-railway-backend-url.up.railway.app` (replace with your active Railway backend URL)
+3. Trigger a redeploy on Netlify. The app will now upload files directly from the user's browser to the Python server, allowing files of any size to be parsed and analyzed instantly!
+
+---
+
 ## 📅 Project Roadmap
 
 ```mermaid
